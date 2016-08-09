@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from pylimit.pyratelimit import PyRateLimit
 from pylimit.pyratelimit_exception import PyRateLimitException
 from pylimit.redis_helper import RedisHelper

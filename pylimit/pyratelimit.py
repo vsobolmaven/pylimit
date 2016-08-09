@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import time
 
 from pylimit.redis_helper import RedisHelper
@@ -12,9 +13,9 @@ class PyRateLimit(object):
         self.limit = None       # type: int
 
     @classmethod
-    def init(cls, redis_host: str, redis_port: int, is_sentinel_redis=False, redis_sentinel_service="mymaster",
+    def init(cls, redis_host, redis_port, is_sentinel_redis=False, redis_sentinel_service=u"mymaster",
              redis_password=None):
-        """
+        u"""
         Initializes redis connection
         :param redis_host: Hostname of redis server
         :type redis_host: str
@@ -36,8 +37,8 @@ class PyRateLimit(object):
             cls.redis_helper = RedisHelper(host=redis_host, port=redis_port, is_sentinel=is_sentinel_redis,
                                            sentinel_service=redis_sentinel_service, password=redis_password)
 
-    def create(self, period: int, limit: int):
-        """
+    def create(self, period, limit):
+        u"""
         Creates a rate limiting rule with rate limiting period and attempt limit
 
         :param period: Rate limiting period in seconds
@@ -50,8 +51,8 @@ class PyRateLimit(object):
         self.period = period
         self.limit = limit
 
-    def __can_attempt(self, namespace: str, add_attempt=True) -> bool:
-        """
+    def __can_attempt(self, namespace, add_attempt=True):
+        u"""
         Checks if a namespace is rate limited or not with including/excluding the current call
 
         :param namespace: Rate limiting namespace
@@ -64,7 +65,7 @@ class PyRateLimit(object):
         """
         can_attempt = False
         if not PyRateLimit.redis_helper:
-            raise PyRateLimitException("redis connection information not provided")
+            raise PyRateLimitException(u"redis connection information not provided")
         connection = PyRateLimit.redis_helper.get_atomic_connection()
         current_time = int(round(time.time() * 1000000))
         old_time_limit = current_time - (self.period * 1000000)
@@ -82,8 +83,8 @@ class PyRateLimit(object):
             can_attempt = True
         return can_attempt
 
-    def attempt(self, namespace: str):
-        """
+    def attempt(self, namespace):
+        u"""
         Records an attempt and returns true of false depending on whether attempt can go through or not
 
         :param namespace: Rate limiting namespace
@@ -93,8 +94,8 @@ class PyRateLimit(object):
         """
         return self.__can_attempt(namespace=namespace)
 
-    def is_rate_limited(self, namespace: str) -> bool:
-        """
+    def is_rate_limited(self, namespace):
+        u"""
         Checks if a namespace is already rate limited or not without making any additional attempts
 
         :param namespace:  Rate limiting namespace

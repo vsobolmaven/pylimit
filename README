@@ -1,3 +1,6 @@
+***Note: This branch is derived from the official master branch but with `3to2` applied to make it python 2 compatible (because our milter library only works with python 2)***
+
+
 # pylimit
 A distributed rate limiting library for python using leaky bucket algorithm and Redis
 

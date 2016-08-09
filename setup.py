@@ -1,13 +1,14 @@
+from __future__ import absolute_import
 from distutils.core import setup
 setup(
-  name = 'pylimit',
-  packages = ['pylimit'],
-  version = '0.1.5',
-  description = 'A distributed rate limiting library for python using leaky bucket algorithm and Redis',
-  author='Biplap Sarkar',
-  author_email='biplap.sarkar@gmail.com',
-  url='https://github.com/biplap-sarkar/pylimit',
-  download_url='https://github.com/biplap-sarkar/pylimit/archive/v0.1.5.tar.gz',
-  keywords=['rate limiting', 'throttle', 'redis'],
+  name = u'pylimit',
+  packages = [u'pylimit'],
+  version = u'0.1.5',
+  description = u'A distributed rate limiting library for python using leaky bucket algorithm and Redis',
+  author=u'Biplap Sarkar',
+  author_email=u'biplap.sarkar@gmail.com',
+  url=u'https://github.com/biplap-sarkar/pylimit',
+  download_url=u'https://github.com/biplap-sarkar/pylimit/archive/v0.1.5.tar.gz',
+  keywords=[u'rate limiting', u'throttle', u'redis'],
   classifiers=[],
 )
