@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from distutils.core import setup
 setup(
   name = u'pylimit',
-  packages = [u'pylimit'],
+  packages = ['pylimit'],
   version = u'0.1.5',
   description = u'A distributed rate limiting library for python using leaky bucket algorithm and Redis',
   author=u'Biplap Sarkar',
